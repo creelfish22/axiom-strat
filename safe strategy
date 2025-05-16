@@ -1,0 +1,49 @@
+{
+  "filter_name": "Solana Safe Launch Filter",
+  "network": "SOL",
+  "pair_age_min_minutes": 2880,
+  "volume_24h_min_usd": 300000,
+  "trade_count_24h_min": 800,
+  "liquidity_min_usd": 200000,
+  "honeypot_check": true,
+  "blacklist_check": true,
+  "verified_contract_required": true,
+  "require_token_metadata": true,
+  "require_creator_verified": true,
+  "dex_score_min": 60,
+  "dev_hold_max_percent": 5,
+  "dev_recent_sells_check": true,
+  "slippage_max_percent": 2,
+  "include_new_pairs": true,
+  "exclude_stablecoin_pairs": true,
+  "price_impact_max_percent": 4,
+  "cooldown_after_launch_minutes": 120
+}
+{
+  "strategy_name": "Solana New Pair Sniper - Safe",
+  "network": "SOL",
+  "enabled": true,
+  "base_currency": "SOL",
+  "buy_type": "auto",
+  "buy_amount": 1,
+  "max_concurrent_positions": 3,
+  "filters": ["solana_safe_filter.json"],
+  "buy_conditions": [],
+  "sell_conditions": [
+    {
+      "type": "take_profit",
+      "value_percent": 50
+    },
+    {
+      "type": "stop_loss",
+      "value_percent": 15
+    }
+  ],
+  "cooldown_minutes": 60,
+  "slippage_max_percent": 2,
+  "trailing_stop": {
+    "enabled": false
+  },
+  "notify_on_trade": true,
+  "paper_trade": true
+}
